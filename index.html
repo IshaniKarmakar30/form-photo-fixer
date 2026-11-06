@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Photo Fixer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Form Photo Fixer</h1>
+      <p>Exam & job application form er photo ebong signature ready korun offline-e.</p>
+    </header>
+
+    <div class="main-layout">
+      <!-- Left Panel: Controls -->
+      <div class="controls-panel">
+        <section class="control-group">
+          <label for="presetSelect">Form Preset:</label>
+          <select id="presetSelect">
+            <option value="upsc">Exam Form A (UPSC) - 3.5x4.5 cm (Max 50 KB)</option>
+            <option value="ssc">Exam Form B (SSC) - 3.5x4.5 cm (Max 20 KB)</option>
+            <option value="bank">Exam Form C (IBPS) - 4.5x3.5 cm (Max 50 KB)</option>
+            <option value="custom">Custom Preset...</option>
+          </select>
+        </section>
+
+        <!-- Custom Preset Settings -->
+        <div id="customSettings" class="custom-inputs hidden">
+          <div class="input-row">
+            <label>Width (px): <input type="number" id="customW" value="350"></label>
+            <label>Height (px): <input type="number" id="customH" value="450"></label>
+          </div>
+          <div class="input-row">
+            <label>Max Size (KB): <input type="number" id="customKB" value="50"></label>
+          </div>
+        </div>
+
+        <section class="control-group">
+          <label for="docType">Asset Type:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="docType" value="photo" checked> Photo</label>
+            <label><input type="radio" name="docType" value="sign"> Signature</label>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <label class="file-btn" for="imageInput">Upload Image</label>
+          <input type="file" id="imageInput" accept="image/*">
+        </section>
+
+        <section class="control-group">
+          <button id="processBtn" class="primary-btn" disabled>Process & Compress</button>
+          <button id="downloadBtn" class="download-btn hidden">Download Result</button>
+        </section>
+      </div>
+
+      <!-- Right Panel: Canvas & Preview -->
+      <div class="preview-panel">
+        <div class="canvas-wrapper">
+          <canvas id="cropCanvas"></canvas>
+          <div id="faceGuide" class="face-guide"></div>
+        </div>
+
+        <div id="statusBox" class="status-box hidden">
+          <p id="sizeStatus">File size: -</p>
+          <p id="dimensionStatus">Dimensions: -</p>
+          <span id="readyBadge" class="badge">Ready to upload</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
